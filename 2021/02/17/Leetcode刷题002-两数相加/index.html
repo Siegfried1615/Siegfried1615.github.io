@@ -19,7 +19,7 @@
   <meta name="description" content="我们的目标是星辰大海！">
   <meta name="author" content="Alex">
   <meta name="keywords" content="">
-  <title>黑暗之魂学习笔记【01-玩家输入模块】【02-平滑衰减】 - 虚无知地</title>
+  <title>Leetcode刷题002-两数相加 - 虚无知地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="黑暗之魂学习笔记【01-玩家输入模块】【02-平滑衰减】">
+            <span class="h2" id="subtitle" title="Leetcode刷题002-两数相加">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-15 01:27" pubdate>
-        2021年2月15日 凌晨
+      <time datetime="2021-02-17 22:54" pubdate>
+        2021年2月17日 晚上
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      333 字
+      336 字
     </span>
   
 
@@ -226,12 +226,13 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">黑暗之魂学习笔记【01-玩家输入模块】【02-平滑衰减】</h1>
+            <h1 style="display: none">Leetcode刷题002-两数相加</h1>
             
             <div class="markdown-body">
-              <h1 id="01-玩家输入模块"><a href="#01-玩家输入模块" class="headerlink" title="01-玩家输入模块"></a>01-玩家输入模块</h1><figure class="highlight c#"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PlayerInput</span> : <span class="hljs-title">MonoBehaviour</span> &#123;<br>    <span class="hljs-comment">// 设置变量获取key的值</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyUp = <span class="hljs-string">&quot;w&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyDown = <span class="hljs-string">&quot;s&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyLeft = <span class="hljs-string">&quot;a&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyRight = <span class="hljs-string">&quot;d&quot;</span>;<br>    <span class="hljs-comment">// Start is called before the first frame update</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span> &#123; &#125;<br>    <span class="hljs-comment">// Update is called once per frame</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-comment">// 初步获取的键盘输入，只有0，1，-1，三个值</span><br>        dUp = (Input.GetKey(keyUp)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyDown)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>);<br>        dRight = (Input.GetKey(keyRight)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyLeft)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>); <br>        <br>        <span class="hljs-keyword">if</span> (Input.GetKey(keyUp)) &#123;<br>        	print(<span class="hljs-string">&quot;key up is pressed&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="02-平滑衰减"><a href="#02-平滑衰减" class="headerlink" title="02-平滑衰减"></a>02-平滑衰减</h1><figure class="highlight c#"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PlayerInput</span> : <span class="hljs-title">MonoBehaviour</span> &#123;<br>    <span class="hljs-comment">// 通过变量，控制脚本的装载</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> inputEnabled = <span class="hljs-literal">true</span>;<br>    <span class="hljs-comment">// Variable</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyUp = <span class="hljs-string">&quot;w&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyDown = <span class="hljs-string">&quot;s&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyLeft = <span class="hljs-string">&quot;a&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyRight = <span class="hljs-string">&quot;d&quot;</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> dUp;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> dRight;<br>    <br>    <span class="hljs-comment">// 平滑过渡的坐标</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _targetDUp;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _targetDRight;<br>    <span class="hljs-comment">// 变化速度</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _velocityDUp;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _velocityDRight;<br>    <br>    <span class="hljs-comment">// Start is called before the first frame update</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span> &#123; &#125;<br><br>    <span class="hljs-comment">// Update is called once per frame</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-comment">// 初步获取的键盘输入，只有0，1，-1，三个值</span><br>        _targetDUp = (Input.GetKey(keyUp)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyDown)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>);<br>        _targetDRight = (Input.GetKey(keyRight)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyLeft)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>);<br>        <span class="hljs-comment">// 设置脚本的装载</span><br>        <span class="hljs-keyword">if</span> (inputEnabled == <span class="hljs-literal">false</span>) &#123;<br>            _targetDUp = <span class="hljs-number">0</span>;<br>            _targetDRight = <span class="hljs-number">0</span>;<br>        &#125;<br>        <br>        <span class="hljs-comment">// 平滑函数的四个参数（当前坐标，目标坐标，速度参数，坐标变化的完成时间）</span><br>        dUp = Mathf.SmoothDamp(dUp, _targetDUp, <span class="hljs-keyword">ref</span> _velocityDUp, <span class="hljs-number">0.1f</span>);<br>        dRight = Mathf.SmoothDamp(dRight, _targetDRight, <span class="hljs-keyword">ref</span> _velocityDRight, <span class="hljs-number">0.1f</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。<br>请你将两个数相加，并以相同形式返回一个表示和的链表。<br>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/02/17/3LPpq1nEhvAoHY9.png" srcset="/img/loading.gif" alt="image-20210217225656467"></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">示例 1：<br>输入：l1 = [2,4,3], l2 = [5,6,4]<br>输出：[7,0,8]<br>解释：342 + 465 = 807.<br><br>示例 2：<br>输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]<br>输出：[8,9,9,9,0,0,0,1]<br><br>来源：力扣（LeetCode）<br>链接：https://leetcode-cn.com/problems/add-two-numbers<br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。<br></code></pre></div></td></tr></table></figure>
+<h2 id="思路-数学进位计算"><a href="#思路-数学进位计算" class="headerlink" title="思路 - 数学进位计算"></a>思路 - 数学进位计算</h2><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C++"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * struct ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode *next;</span><br><span class="hljs-comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="hljs-comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="hljs-comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="hljs-comment"> * &#125;;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ListNode* <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;<br>        ListNode *dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">-1</span>);<br>        ListNode *pointer = dummyHead;<br>        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span>(l1 || l2)&#123;<br>            <span class="hljs-keyword">int</span> v1 = l1 ? l1-&gt;val : <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">int</span> v2 = l2 ? l2-&gt;val : <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">int</span> sum = v1+v2+carry;<br>            carry = sum / <span class="hljs-number">10</span>;<br>            <span class="hljs-keyword">int</span> current_num = sum % <span class="hljs-number">10</span>;<br>            <br>            pointer-&gt;next = <span class="hljs-keyword">new</span> ListNode(current_num);<br>            pointer = pointer-&gt;next;<br>            <span class="hljs-keyword">if</span> (l1) l1 = l1-&gt;next;<br>            <span class="hljs-keyword">if</span> (l2) l2 = l2-&gt;next;<br><br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(carry) pointer-&gt;next = <span class="hljs-keyword">new</span> ListNode(carry);<br>        <span class="hljs-keyword">return</span> dummyHead-&gt;next;<br>    &#125;<br><br>&#125;;<br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>
@@ -241,7 +242,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E9%BB%91%E6%9A%97%E4%B9%8B%E9%AD%82%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">黑暗之魂学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode%E5%88%B7%E9%A2%98/">Leetcode刷题</a>
                     
                   </div>
                 
@@ -249,9 +250,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/unity/">unity</a>
-                    
-                      <a class="hover-with-bg" href="/tags/arpg/">arpg</a>
+                      <a class="hover-with-bg" href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
                     
                   </div>
                 
@@ -264,15 +263,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/17/Leetcode%E5%88%B7%E9%A2%98001-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Leetcode刷题001-两数之和</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2021/02/17/Leetcode%E5%88%B7%E9%A2%98001-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+                        <span class="hidden-mobile">Leetcode刷题001-两数之和</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
