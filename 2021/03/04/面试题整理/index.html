@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.2k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      12
        分钟
     </span>
   
@@ -260,6 +260,14 @@
 <li>对于自定义的类型，<code>new</code> 首先调用 <code>operator new()</code> 函数申请空间（底层通过 <code>malloc</code> 实现），然后调用构造函数进行初始化，最后返回自定义类型的指针；<code>delete</code> 首先调用析构函数，然后调用 <code>operator delete()</code> 释放空间（底层通过 free 实现）。<code>malloc</code>、<code>free</code> 无法进行自定义类型的对象的构造和析构。<br><code>new</code> 操作符从自由存储区上为对象动态分配内存，而 <code>malloc</code> 函数从堆上动态分配内存。（自由存储区不等于堆）</li>
 </ul>
 <h3 id="extern-C的作用"><a href="#extern-C的作用" class="headerlink" title="extern C的作用"></a>extern C的作用</h3><p>当 C++ 程序 需要调用 C 语言编写的函数，C++ 使用链接指示，即 <code>extern &quot;C&quot;</code> 指出任意非 C++ 函数所用的语言。</p>
+<h3 id="volatile关键字的作用"><a href="#volatile关键字的作用" class="headerlink" title="volatile关键字的作用"></a>volatile关键字的作用</h3><ul>
+<li><p><code>volatile</code> 的作用：当对象的值可能在程序的控制或检测之外被改变时，应该将该对象声明为 <code>violatile</code>，告知编译器不应对这样的对象进行优化。</p>
+</li>
+<li><p><code>volatile</code>不具有原子性。</p>
+</li>
+<li><p><code>volatile</code> 对编译器的影响：使用该关键字后，编译器不会对相应的对象进行优化，即不会将变量从内存缓存到寄存器中，防止多个线程有可能使用内存中的变量，有可能使用寄存器中的变量，从而导致程序错误。</p>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -291,6 +299,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/03/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A82019%E6%98%A5%E6%8B%9B%E7%A0%94%E5%8F%91%E9%83%A8%E5%88%86%E7%BC%96%E7%A8%8B%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">字节跳动2019春招研发部分编程题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
