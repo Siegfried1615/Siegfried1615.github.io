@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>2017网易互娱雷火盘古实习生招聘笔试真题</title>
+    <link href="/2021/03/30/2017%E7%BD%91%E6%98%93%E4%BA%92%E5%A8%B1%E9%9B%B7%E7%81%AB%E7%9B%98%E5%8F%A4%E5%AE%9E%E4%B9%A0%E7%94%9F%E6%8B%9B%E8%81%98%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/"/>
+    <url>/2021/03/30/2017%E7%BD%91%E6%98%93%E4%BA%92%E5%A8%B1%E9%9B%B7%E7%81%AB%E7%9B%98%E5%8F%A4%E5%AE%9E%E4%B9%A0%E7%94%9F%E6%8B%9B%E8%81%98%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>笔试题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>笔试</tag>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>牛客输入输出练习</title>
     <link href="/2021/03/25/%E7%89%9B%E5%AE%A2%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/"/>
     <url>/2021/03/25/%E7%89%9B%E5%AE%A2%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%BB%83%E4%B9%A0/</url>
@@ -13,43 +40,14 @@
     
     <categories>
       
-      <category>刷题</category>
+      <category>笔试题</category>
       
     </categories>
     
     
     <tags>
-      
-      <tag>刷题</tag>
       
       <tag>C++</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【算法】ac自动机</title>
-    <link href="/2021/03/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91ac%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
-    <url>/2021/03/06/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91ac%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
-    
-    <content type="html"><![CDATA[<h1 id="AC自动机"><a href="#AC自动机" class="headerlink" title="AC自动机"></a>AC自动机</h1><p>AC自动机可以实现多模式匹配，只需要一遍扫描。</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">多模式匹配：在一个字符串中同时搜索多个字串<br>p: &#123;he, she, hers, his&#125;<br>T: ahishers<br></code></pre></div></td></tr></table></figure><h2 id="Trie树-前缀树-字典树"><a href="#Trie树-前缀树-字典树" class="headerlink" title="Trie树  -  前缀树/字典树"></a>Trie树  -  前缀树/字典树</h2><p>实现前缀树</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>算法</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>算法</tag>
-      
-      <tag>自动机</tag>
       
     </tags>
     
@@ -67,16 +65,16 @@
     
     <categories>
       
-      <category>笔试算法题</category>
+      <category>笔试题</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>面试</tag>
+      <tag>笔试</tag>
       
-      <tag>编程题</tag>
+      <tag>算法</tag>
       
     </tags>
     
@@ -94,16 +92,16 @@
     
     <categories>
       
-      <category>C++</category>
+      <category>面试题</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>八股文</tag>
+      <tag>C++</tag>
       
-      <tag>面试题</tag>
+      <tag>八股文</tag>
       
     </tags>
     
@@ -148,7 +146,7 @@
     
     <categories>
       
-      <category>C++</category>
+      <category>面试题</category>
       
     </categories>
     
@@ -235,8 +233,6 @@
     <tags>
       
       <tag>unity</tag>
-      
-      <tag>arpg</tag>
       
     </tags>
     
