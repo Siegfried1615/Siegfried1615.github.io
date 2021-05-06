@@ -19,7 +19,7 @@
   <meta name="description" content="我们的目标是星辰大海！">
   <meta name="author" content="Alex">
   <meta name="keywords" content="">
-  <title>黑暗之魂学习笔记【01-玩家输入模块】【02-平滑衰减】 - 虚无知地</title>
+  <title>计算机网络总结 - 虚无知地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -159,12 +159,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://desk.duba.com/yuanqi/images/lol/videoImages/vm5.png') no-repeat center center;
+         style="background: url('https://img.duotegame.com/article/contents/2020/09/08/small_2020090852035520.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="黑暗之魂学习笔记【01-玩家输入模块】【02-平滑衰减】">
+            <span class="h2" id="subtitle" title="计算机网络总结">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-15 01:27" pubdate>
-        2021年2月15日 凌晨
+      <time datetime="2021-05-06 11:44" pubdate>
+        2021年5月6日 中午
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      333 字
+      987 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      10
        分钟
     </span>
   
@@ -226,12 +226,23 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">黑暗之魂学习笔记【01-玩家输入模块】【02-平滑衰减】</h1>
+            <h1 style="display: none">计算机网络总结</h1>
             
             <div class="markdown-body">
-              <h1 id="01-玩家输入模块"><a href="#01-玩家输入模块" class="headerlink" title="01-玩家输入模块"></a>01-玩家输入模块</h1><figure class="highlight c#"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PlayerInput</span> : <span class="hljs-title">MonoBehaviour</span> &#123;<br>    <span class="hljs-comment">// 设置变量获取key的值</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyUp = <span class="hljs-string">&quot;w&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyDown = <span class="hljs-string">&quot;s&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyLeft = <span class="hljs-string">&quot;a&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyRight = <span class="hljs-string">&quot;d&quot;</span>;<br>    <span class="hljs-comment">// Start is called before the first frame update</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span> &#123; &#125;<br>    <span class="hljs-comment">// Update is called once per frame</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-comment">// 初步获取的键盘输入，只有0，1，-1，三个值</span><br>        dUp = (Input.GetKey(keyUp)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyDown)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>);<br>        dRight = (Input.GetKey(keyRight)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyLeft)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>); <br>        <br>        <span class="hljs-keyword">if</span> (Input.GetKey(keyUp)) &#123;<br>        	print(<span class="hljs-string">&quot;key up is pressed&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-
-<h1 id="02-平滑衰减"><a href="#02-平滑衰减" class="headerlink" title="02-平滑衰减"></a>02-平滑衰减</h1><figure class="highlight c#"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C#"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PlayerInput</span> : <span class="hljs-title">MonoBehaviour</span> &#123;<br>    <span class="hljs-comment">// 通过变量，控制脚本的装载</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> inputEnabled = <span class="hljs-literal">true</span>;<br>    <span class="hljs-comment">// Variable</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyUp = <span class="hljs-string">&quot;w&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyDown = <span class="hljs-string">&quot;s&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyLeft = <span class="hljs-string">&quot;a&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> keyRight = <span class="hljs-string">&quot;d&quot;</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> dUp;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> dRight;<br>    <br>    <span class="hljs-comment">// 平滑过渡的坐标</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _targetDUp;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _targetDRight;<br>    <span class="hljs-comment">// 变化速度</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _velocityDUp;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span> _velocityDRight;<br>    <br>    <span class="hljs-comment">// Start is called before the first frame update</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>(<span class="hljs-params"></span>)</span> &#123; &#125;<br><br>    <span class="hljs-comment">// Update is called once per frame</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-comment">// 初步获取的键盘输入，只有0，1，-1，三个值</span><br>        _targetDUp = (Input.GetKey(keyUp)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyDown)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>);<br>        _targetDRight = (Input.GetKey(keyRight)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>) - (Input.GetKey(keyLeft)? <span class="hljs-number">1.0f</span>:<span class="hljs-number">0</span>);<br>        <span class="hljs-comment">// 设置脚本的装载</span><br>        <span class="hljs-keyword">if</span> (inputEnabled == <span class="hljs-literal">false</span>) &#123;<br>            _targetDUp = <span class="hljs-number">0</span>;<br>            _targetDRight = <span class="hljs-number">0</span>;<br>        &#125;<br>        <br>        <span class="hljs-comment">// 平滑函数的四个参数（当前坐标，目标坐标，速度参数，坐标变化的完成时间）</span><br>        dUp = Mathf.SmoothDamp(dUp, _targetDUp, <span class="hljs-keyword">ref</span> _velocityDUp, <span class="hljs-number">0.1f</span>);<br>        dRight = Mathf.SmoothDamp(dRight, _targetDRight, <span class="hljs-keyword">ref</span> _velocityDRight, <span class="hljs-number">0.1f</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+              <h1 id="ARP协议的工作过程"><a href="#ARP协议的工作过程" class="headerlink" title="ARP协议的工作过程"></a>ARP协议的工作过程</h1><p>首先，每个主机会在自己的ARP缓冲区中建立一个ARP列表，用来表示IP地址和MAC地址之间的对应关系。</p>
+<p>当源主机要发送数据的时候，首先检查ARP表中是否有对应的IP地址的目的主机MAC地址，如果有，直接发送数据，如果没有，就像本网段的所有主机发送ARP数据包（包括源主机IP、源主机MAC、目的主机IP）</p>
+<p>当本网络所有主机收到该ARP数据包时，先检查其中的目的主机IP是否是自己的IP，如果不是，就忽略，如果是，则先取出源主机IP与MAC写入自己的ARP标红，如果已经存在就覆盖。然后将自己的MAC地址写入ARP响应包中，返回给源主机。</p>
+<p>最后，源主机收到ARP响应包之后，将目的主机的IP和MAC地址写入ARP列表，并利用这个信息进行数据传输，如果源主机一直没有收到ARP响应包的话，就表示ARP查询失败</p>
+<h2 id="浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。"><a href="#浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。" class="headerlink" title="浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。"></a>浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。</h2><p>浏览器输入一个URL并回车：</p>
+<p>首先进行域名解析，<strong>浏览器</strong>搜索自己的DNS缓存，缓存中维护一张域名与IP地址的对应表。若没有，则搜索<strong>操作系统</strong>的DNS缓存；若没有，则将域名发送至本地域名服务器（递归查询方式），<strong>本地域名服务器</strong>查询自己的DNS缓存，查找成功则返回结果，否则，本地的DNS服务器向<strong>根域名服务器</strong>发出查询请求，根域名服务器告知该域名的一级域名服务器，然后本地服务器给该一级域名服务器发送查询请求，然后依次类推直到查询到该域名的IP地址。DNS服务器是基于UDP的，因此会用到UDP协议。</p>
+<p>得到IP地址以后，浏览器就要与服务器建立一个HTTP连接，因此要用到HTTP协议。HTTP生成一个GET请求报文。</p>
+<p>接下来到了传输层，选择传输协议，TCP或者UDP，TCP是可靠的传输控制协议，对HTTP请求进行封装，加入了端口号等信息。</p>
+<p>然后到了网络层，通过IP协议将IP地址封装为IP数据报；然后此时会用到ARP协议，主机发送信息时将包含目标IP地址的ARP请求广播到网络上的所有主机，并接收返回消息，以此确定目标的物理地址，找到目的MAC地址。</p>
+<p>接下来到了数据链路层，把网络层交下来的IP数据报添加首部和尾部，封装为MAC帧，现在根据目的mac开始建立TCP连接，三次握手，接收端在收到物理层上交的比特流后，根据首尾的标记，识别帧的开始和结束，将中间的数据部分上交给网络层，然后层层向上传递到应用层。</p>
+<p>服务器响应请求并请求客户端要的资源，传回给客户端。</p>
+<p>断开TCP连接，浏览器对页面进行渲染呈现给客户端。</p>
+<h1 id="Socket步骤"><a href="#Socket步骤" class="headerlink" title="Socket步骤"></a>Socket步骤</h1><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>(1) 创建ServerSocket对象，绑定监听端口；<br> (2) 通过accept()方法监听客户端请求；<br> (3) 连接建立后，通过输入流读取客户端发送的请求信息；<br> (4) 通过输出流向客户端发送相应信息；<br> (5) 关闭响应资源。</p>
+<h2 id="1-2-客户端"><a href="#1-2-客户端" class="headerlink" title="1.2 客户端"></a>1.2 客户端</h2><p>(1) 创建Socket对象，指明需要连接的服务器地址和端口；<br> (2) 连接建立后，通过输出流向服务器端发送请求信息；<br> (3) 通过输入流获取服务器端返回的响应信息；<br> (4) 关闭响应资源。</p>
 
             </div>
             <hr>
@@ -241,7 +252,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E9%BB%91%E6%9A%97%E4%B9%8B%E9%AD%82%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">黑暗之魂学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                   </div>
                 
@@ -249,7 +260,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/unity/">unity</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
                     
                   </div>
                 
@@ -262,15 +275,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/21/%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程序的内存分区模型</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2021/05/06/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/">
+                        <span class="hidden-mobile">数据库知识点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

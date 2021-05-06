@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.1k 字
+      4.6k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      32
+      48
        分钟
     </span>
   
@@ -234,6 +234,7 @@
 <h1 id="不适合建立索引的情况"><a href="#不适合建立索引的情况" class="headerlink" title="不适合建立索引的情况"></a>不适合建立索引的情况</h1><p>1、频繁更新的字段，经常增删改的表，不适合创建索引<br>2、WHERE条件里用不到字段不适合创建索引<br>3、表记录太少的情况无需建立索引<br>4、如果某个数据列中包含许多重复的内容，为它建立索引就没有太大的实际效果</p>
 <h1 id="聚簇索引-非聚簇索引"><a href="#聚簇索引-非聚簇索引" class="headerlink" title="聚簇索引/非聚簇索引"></a>聚簇索引/非聚簇索引</h1><p>聚簇索引：Innodb的主键索引，非叶子节点存储的是索引指针，叶子节点存储的是既有索引也有数据<br>非聚簇索引：MyISAM中索引和数据文件分开存储，B+Tree的叶子节点存储的是数据存放的地址，而不是具体的数据<br>如果一颗大的B+树索引数据结构里，叶子节点就是数据页自己本身，那么此时我们就可以称这颗 B+树索引为聚簇索引<br>MySQL使用B+树作为索引结构</p>
 <h1 id="索引为什么能加快查询速度"><a href="#索引为什么能加快查询速度" class="headerlink" title="索引为什么能加快查询速度"></a>索引为什么能加快查询速度</h1><p>因为数据库在执行一条语句的时候，默认的方式是根据搜索条件进行全表扫描，如果遇到匹配条件的就加入搜索结果集合，如果对某一个字段添加索引的话，查询时就会先去索引列表中一次定位到特定值的行数，减少遍历匹配的行数，达到增加查询速度的目的</p>
+<h1 id="联合索引在什么情况下使用"><a href="#联合索引在什么情况下使用" class="headerlink" title="联合索引在什么情况下使用"></a>联合索引在什么情况下使用</h1><p>联合索引可以缩小搜索的范围，和两个单列索引不同，当同时执行两个单列索引所返回的数据量都很大时，可以考虑使用联合索引缩小搜索范围</p>
 <h1 id="什么是脏读？幻读？不可重复读？"><a href="#什么是脏读？幻读？不可重复读？" class="headerlink" title="什么是脏读？幻读？不可重复读？"></a>什么是脏读？幻读？不可重复读？</h1><ul>
 <li>脏读(Drity Read)：某个事务已更新一份数据，另一个事务在此时读取了同一份数据，由于某些原因，前一个RollBack了操作，则后一个事务所读取的数据就会是不正确的。</li>
 <li>不可重复读(Non-repeatable read):在一个事务的两次查询之中数据不一致，这可能是两次查询过程中间插入了一个事务更新的原有的数据。</li>
@@ -258,6 +259,13 @@
 <p><strong>读已提交</strong><br>Oracle和SQL Server默认隔离级别<br>当隔离级别设置为Read committed 时，避免了脏读，但是可能会造成不可重复读</p>
 <p><strong>可重复读</strong><br>MySQL默认隔离级别<br>Repeatable read避免了不可重复读，但还有可能出现幻读</p>
 <p><strong>可序列化</strong><br>Serializable 是最高的事务隔离级别，同时代价也花费最高，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻像读</p>
+<h1 id="InnoDB与MyISAM的区别"><a href="#InnoDB与MyISAM的区别" class="headerlink" title="InnoDB与MyISAM的区别"></a>InnoDB与MyISAM的区别</h1><p>1.InnoDB支持事务，MyISAM不支持</p>
+<p>2.InnoDB支持外键，MyISAM不支持</p>
+<p>3.InnoDB支持行锁和表锁，MyISAM只支持表锁</p>
+<p>4.InnoDB支持聚簇索引，数据和索引聚集在一起。MyISAM不支持聚簇索引，数据和索引是分开存储的</p>
+<p>5.COUNT()函数</p>
+<p>关于MyISAM有这样一个误解，就是执行COUNT()函数会非常快。这个论断需要有一个前提条件，没有任何WHERE条件的<code>COUNT(*)</code>才非常快。因为MyISAM用一个变量保存了表的行数，当没有WHERE条件时可以直接读取这个值即可。而如果存在WHERE条件时，MyISAM没有任何优势，比起InnoDB可能慢，也可能快</p>
+<p>6.主键，因为InnoDB支持聚簇索引，必须要有主键，MyISAM可以没有主键</p>
 <h1 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h1><p>主库将变更写入 <code>binlog</code> 日志，从库连接到主库之后，主库会创建一个<code>log dump</code> 线程，用于发送 <code>bin log</code> 的内容。<br>从库开启同步以后，会创建一个 IO 线程用来连接主库，请求主库中更新的 <code>bin log</code>，I/O 线程接收到主库 <code>binlog dump</code> 进程发来的更新之后，保存在本地 <code>relay</code> 日志中。<br>接着从库中有一个 SQL 线程负责读取 <code>relay log</code> 中的内容，同步到数据库存储中，也就是在自己本地进行回放，最终保证主从数据的一致性。</p>
 <p><strong>主从复制下的延时问题</strong><br>解决这个问题的关键是要让从服务也用多线程并行复制binlog数据<br>MySQL自5.7版本后就已经支持并行复制了。可以在从服务上设置 <code>slave_parallel_workers</code>为一个大于0的数，然后把<code>slave_parallel_type</code>参数设置为<code> LOGICAL_CLOCK</code>，这就可以了</p>
 <p><strong>为了解决主从同步延迟的问题，通常有以下几个方法</strong><br>1.敏感业务强制读主库<br>在开发中有部分业务需要写库后实时读数据，这一类操作通常可以通过强制读主库来解决<br>2.关键业务不进行读写分离<br>对一致性不敏感的业务，比如电商中的订单评论、个人信息等可以进行读写分离，对一致性要求比较高的业务，比如金融支付，不进行读写分离，避免延迟导致的问题。</p>
@@ -279,7 +287,49 @@
 <li>索引字段使用 or 时，会导致索引失效而转向全表扫描</li>
 </ul>
 <h1 id="MVCC的含义，如何实现的。"><a href="#MVCC的含义，如何实现的。" class="headerlink" title="MVCC的含义，如何实现的。"></a>MVCC的含义，如何实现的。</h1><p>MVCC(Multi Version Concurrency Control的简称)，代表多版本并发控制。与MVCC相对的，是基于锁的并发控制，Lock-Based Concurrency Control)。<br>MVCC，是一种用来解决读-写冲突的无锁并发控制，也就是为事务分配单向增长的时间戳，为每个修改保存一个版本，版本与事务时间戳关联，读操作只读该事务开始前的数据库的快照。 这样在读操作不用阻塞写操作，写操作不用阻塞读操作的同时，避免了脏读和不可重复读。<br>MVCC最大的优势：读不加锁，读写不冲突。在读多写少的OLTP应用中，读写不冲突是非常重要的，极大的增加了系统的并发性能。<br>MVCC是通过在每行记录后面保存两个隐藏的列来实现的。这两个列，一个保存了行的创建时间，一个保存行的过期时间（或删除时间）。当然存储的并不是实际的时间值，而是系统版本号（system version number)。每开始一个新的事务，系统版本号都会自动递增。事务开始时刻的系统版本号会作为事务的版本号，用来和查询到的每行记录的版本号进行比较。</p>
+<h1 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h1><p><strong>第一范式</strong>，是指没有重复的列， 表示数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值，即实体中的某个属性不能有多个值或者不能有重复的属性。在第一范式（1NF）中表的每一行只包含一个实例的信息。简而言之，第一范式就是无重复的列。</p>
+<p><strong>第二范式</strong>，是指属性完全依赖主键， 要求数据库表中的每个实例或行必须可以被惟一地区分。为实现区分通常需要为表加上一个列，以存储各个实例的惟一标识。例如员工信息表中加上了员工编号（emp_id）列，因为每个员工的员工编号是惟一的，因此每个员工可以被惟一区分。这个惟一属性列被称为主关键字或主键、主码。为了解决严重的数据冗余问题。</p>
+<p><strong>第三范式</strong>，是要求一个数据库表中不包含已在其它表中已包含的非主关键字信息。 例如，存在一个部门信息表，其中每个部门有部门编号（dept_id）、部门名称、部门简介等信息。那么在的员工信息表中列出部门编号后就不能再将部门名称、部门简介等与部门有关的信息再加入员工信息表中。如果不存在部门信息表，则根据第三范式（3NF）也应该构建它，否则就会有大量的数据冗余。简而言之，第三范式就是属性不依赖于其它非主属性。 也就是说， 如果存在非主属性对于码的传递函数依赖，则不符合3NF的要求。</p>
 <h1 id="页分裂"><a href="#页分裂" class="headerlink" title="页分裂"></a>页分裂</h1><p>MySQL主键不是自增长，会发生页分裂<br>索引运作的一个核心基础就是要求你后一个 数据页的主键值都大于前面一个数据页的主键值，但是如果你的主键是自增的，那还可以保证这一点， 因为你新插入后一个数据页的主键值一定都大于前一个数据页的主键值。<br>但是有时候你的主键并不是自增长的，所以可能会出现你后一个数据页的主键值里，有的主键是小于前一个数据页的主键值的<br>页分裂的过程，核心目标就是保证下一个数据页里的主键值都比上一个数据页里的主键值要大</p>
+<h1 id="Nginx-代理"><a href="#Nginx-代理" class="headerlink" title="Nginx 代理"></a>Nginx 代理</h1><p><strong>正向代理的概念：</strong></p>
+<p>正向代理是指客户端与目标服务器之间增加一个代理服务器，客户端直接访问代理服务器，在由代理服务器访问目标服务器并返回客户端并返回 。这个过程当中客户端需要知道代理服务器地址，并配置连接</p>
+<p><strong>反向代理的概念：</strong></p>
+<p>反向代理是指 客户端访问目标服务器，在目标服务内部有一个统一接入网关将请求转发至后端真正处理的服务器并返回结果。这个过程当中客户端不需要知道代理服务器地址，代理对客户端而言是透明的</p>
+<p>正向代理是代理客户端，为客户端收发请求，使真实客户端对服务器不可见；</p>
+<p>而反向代理是代理服务器端，为服务器收发请求，使真实服务器对客户端不可见</p>
+<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><p>负载均衡是指如何将网络请求派发到集群中的一个或多个节点上处理，一般来说，传统的负载均衡可以分为硬件负载均衡和软件负载均衡<br>硬件负载均衡，就是通过专门的硬件来实现负载均衡<br>软件负载均衡则是通过负载均衡软件实现，常见的就是 Nginx</p>
+<p><strong>常见的负载均衡策略</strong></p>
+<blockquote>
+<p>轮询策略</p>
+</blockquote>
+<p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除</p>
+<figure class="highlight nginx"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">upstream</span> backserver &#123;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">192.168.0.14</span>;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">192.168.0.15</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>加权轮询</p>
+</blockquote>
+<p>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况</p>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">upstream backserver &#123;<br>   <span class="hljs-built_in"> server </span>192.168.0.14 <span class="hljs-attribute">weight</span>=3;<br>   <span class="hljs-built_in"> server </span>192.168.0.15 <span class="hljs-attribute">weight</span>=7;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>随机策略</p>
+</blockquote>
+<p>随机策略和轮询相似，从列表中随机的取一个，最好不要应用随机策略，可能会导致请求不均匀</p>
+<blockquote>
+<p>最小响应时间</p>
+</blockquote>
+<p>这个主要是在一些对请求延时敏感的场景中，在进行路由时，会优先发送给响应时间最小的节点</p>
+<figure class="highlight abnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs abnf">upstream backserver &#123;<br>    server server1<span class="hljs-comment">;</span><br>    server server2<span class="hljs-comment">;</span><br>    fair<span class="hljs-comment">;</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p><strong>url_hash（第三方）</strong></p>
+<p>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效</p>
+<figure class="highlight nginx"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">upstream</span> backserver &#123;<br>    <span class="hljs-attribute">server</span> squid1:<span class="hljs-number">3128</span>;<br>    <span class="hljs-attribute">server</span> squid2:<span class="hljs-number">3128</span>;<br>    <span class="hljs-attribute">hash</span> $request_uri;<br>    <span class="hljs-attribute">hash_method</span> crc32;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<blockquote>
+<p>最小并发数策略</p>
+</blockquote>
+<p>最小并发策略会记录当前时刻每个节点正在处理的事务数，在路由时选择并发最小的节点，最小并发策略可以比较好地反应服务器运行情况，适用于对系统负载较为敏感的场景</p>
+<blockquote>
+<p>ip_hash</p>
+</blockquote>
+<p>如果客户已经访问了某个服务器，当用户再次访问时，会将该请求通过哈希算法，自动定位到该服务器</p>
+<p>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题</p>
 
             </div>
             <hr>
@@ -313,6 +363,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
