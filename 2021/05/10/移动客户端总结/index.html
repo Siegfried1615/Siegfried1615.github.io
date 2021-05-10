@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.5k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      15
        分钟
     </span>
   
@@ -244,6 +244,8 @@
 <p><strong>4、视图与控制器间的过于紧密的连接</strong></p>
 <p>　　视图与控制器是相互分离，但却是联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用。【例如，不可能总是在jsp页面中直接访问模型，一般放在逻辑控制层进行处理，servlet】</p>
 <p><strong>5、视图对模型数据的低效率访问</strong><br>　　依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。【例如，页面的有一部分数据我并没有更新，但是提交到模型层照样会去获得返回显示 】</p>
+<h1 id="HTTPDNS和localDNS"><a href="#HTTPDNS和localDNS" class="headerlink" title="HTTPDNS和localDNS"></a>HTTPDNS和localDNS</h1><p>HTTPDNS使用HTTP协议进行域名解析，代替现有基于UDP的DNS协议，域名解析请求直接发送到阿里云的HTTPDNS服务器，从而绕过运营商的Local DNS，能够避免Local DNS造成的域名劫持问题和调度不精准问题。</p>
+<p>localdns发送udp请求到53端口，httpdns发送http请求到dns服务器<br>localdns存在问题，httpdns进行了规避<br>域名缓存问题，可能导致负载均衡失效<br>域名转发问题，无法获得真实客户端ip，可能导致跨运营商访问<br>出口NAT问题，无法获得真实客户端ip<br>域名更新问题，无法获取最新结果<br>解析延迟，遍历多层dns服务器，时间较长</p>
 
             </div>
             <hr>
