@@ -19,7 +19,7 @@
   <meta name="description" content="我们的目标是星辰大海！">
   <meta name="author" content="Alex">
   <meta name="keywords" content="">
-  <title>计算机网络总结 - 虚无知地</title>
+  <title>移动客户端总结 - 虚无知地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -159,12 +159,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://img.duotegame.com/article/contents/2020/09/08/small_2020090852035520.jpg') no-repeat center center;
+         style="background: url('https://pic3.zhimg.com/80/v2-8299d5eae2d7c4ac66450baad1a1496a_720w.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="计算机网络总结">
+            <span class="h2" id="subtitle" title="移动客户端总结">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-06 11:44" pubdate>
-        2021年5月6日 中午
+      <time datetime="2021-05-10 11:10" pubdate>
+        2021年5月10日 上午
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      987 字
+      1.3k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      13
        分钟
     </span>
   
@@ -226,23 +226,24 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">计算机网络总结</h1>
+            <h1 style="display: none">移动客户端总结</h1>
             
             <div class="markdown-body">
-              <h1 id="ARP协议的工作过程"><a href="#ARP协议的工作过程" class="headerlink" title="ARP协议的工作过程"></a>ARP协议的工作过程</h1><p>首先，每个主机会在自己的ARP缓冲区中建立一个ARP列表，用来表示IP地址和MAC地址之间的对应关系。</p>
-<p>当源主机要发送数据的时候，首先检查ARP表中是否有对应的IP地址的目的主机MAC地址，如果有，直接发送数据，如果没有，就像本网段的所有主机发送ARP数据包（包括源主机IP、源主机MAC、目的主机IP）</p>
-<p>当本网络所有主机收到该ARP数据包时，先检查其中的目的主机IP是否是自己的IP，如果不是，就忽略，如果是，则先取出源主机IP与MAC写入自己的ARP标红，如果已经存在就覆盖。然后将自己的MAC地址写入ARP响应包中，返回给源主机。</p>
-<p>最后，源主机收到ARP响应包之后，将目的主机的IP和MAC地址写入ARP列表，并利用这个信息进行数据传输，如果源主机一直没有收到ARP响应包的话，就表示ARP查询失败</p>
-<h2 id="浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。"><a href="#浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。" class="headerlink" title="浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。"></a>浏览器输入一个URL（网址）后的过程涉及到哪些网络协议，请具体描述。</h2><p>浏览器输入一个URL并回车：</p>
-<p>首先进行域名解析，<strong>浏览器</strong>搜索自己的DNS缓存，缓存中维护一张域名与IP地址的对应表。若没有，则搜索<strong>操作系统</strong>的DNS缓存；若没有，则将域名发送至本地域名服务器（递归查询方式），<strong>本地域名服务器</strong>查询自己的DNS缓存，查找成功则返回结果，否则，本地的DNS服务器向<strong>根域名服务器</strong>发出查询请求，根域名服务器告知该域名的一级域名服务器，然后本地服务器给该一级域名服务器发送查询请求，然后依次类推直到查询到该域名的IP地址。DNS服务器是基于UDP的，因此会用到UDP协议。</p>
-<p>得到IP地址以后，浏览器就要与服务器建立一个HTTP连接，因此要用到HTTP协议。HTTP生成一个GET请求报文。</p>
-<p>接下来到了传输层，选择传输协议，TCP或者UDP，TCP是可靠的传输控制协议，对HTTP请求进行封装，加入了端口号等信息。</p>
-<p>然后到了网络层，通过IP协议将IP地址封装为IP数据报；然后此时会用到ARP协议，主机发送信息时将包含目标IP地址的ARP请求广播到网络上的所有主机，并接收返回消息，以此确定目标的物理地址，找到目的MAC地址。</p>
-<p>接下来到了数据链路层，把网络层交下来的IP数据报添加首部和尾部，封装为MAC帧，现在根据目的mac开始建立TCP连接，三次握手，接收端在收到物理层上交的比特流后，根据首尾的标记，识别帧的开始和结束，将中间的数据部分上交给网络层，然后层层向上传递到应用层。</p>
-<p>服务器响应请求并请求客户端要的资源，传回给客户端。</p>
-<p>断开TCP连接，浏览器对页面进行渲染呈现给客户端。</p>
-<h1 id="Socket步骤"><a href="#Socket步骤" class="headerlink" title="Socket步骤"></a>Socket步骤</h1><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>(1) 创建ServerSocket对象，绑定监听端口；<br> (2) 通过accept()方法监听客户端请求；<br> (3) 连接建立后，通过输入流读取客户端发送的请求信息；<br> (4) 通过输出流向客户端发送相应信息；<br> (5) 关闭响应资源。</p>
-<h2 id="1-2-客户端"><a href="#1-2-客户端" class="headerlink" title="1.2 客户端"></a>1.2 客户端</h2><p>(1) 创建Socket对象，指明需要连接的服务器地址和端口；<br> (2) 连接建立后，通过输出流向服务器端发送请求信息；<br> (3) 通过输入流获取服务器端返回的响应信息；<br> (4) 关闭响应资源。</p>
+              <h1 id="MVC的优缺点"><a href="#MVC的优缺点" class="headerlink" title="MVC的优缺点"></a>MVC的优缺点</h1><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>　　<strong>优点</strong>：分层，结构清晰，耦合性低，大型项目代码的复用性得到极大的提高，开发人员分工明确，提高了开发的效率，维护方便，降低了维护成本。<br>　　<strong>缺点</strong>：简单的小型项目，使用MVC设计反而会降低开发效率，层和层虽然相互分离，但是之间关联性太强，没有做到独立的重用。</p>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><p>MVC 式的出现不仅实现了功能模块和显示模块的分离，同时它还提高了应用系统的可维护性、可扩展性、可移植性和组件的可复用性<br><strong>1、耦合性低</strong><br>　　视图层和业务层分离，这样就允许更改视图层代码而不用重新编译模型和控制器代码,[例如，改写jsp,html,css,javascirpt的代码，并不需要重启服务器]同样，一个应用的业务流程或者业务规则的改变只需要改动MVC的模型层即可【例如，换表名查询，更改一些查询的条件，或者使用动态sql还是静态的sql，只用更改model即可】。因为模型与控制器和视图相分离，所以很容易改变应用程序的数据层和业务规则。<br><strong>2、重用性高</strong><br>　　随着技术的不断进步，需要用越来越多的方式来访问应用程序。MVC模式允许使用各种不同样式的视图来访问同一个服务器端的代码，因为多个视图能共享一个模型，它包括任何WEB(HTTP)浏览器或者无线浏览器(wap)，比如，用户可以通过电脑也可通过手机来订购某样产品，虽然订购的方式不一样，但处理订购产品的方式是一样的。由于模型返回的数据没有进行格式化，所以同样的构件能被不同的界面使用。【例如，模型层实现了同样的分页，不同的视图层可以用一万种不同的显示方法，例如百度搜索下面的分页和谷歌搜索下面的分页】MVC使开发和维护用户接口的技术含量降低。</p>
+<p><strong>3、部署快</strong></p>
+<p>　　使用MVC模式使开发时间得到相当大的缩减，它使程序员(Java开发人员)集中精力于业务逻辑，界面程序员(HTML和JSP开发人员)集中精力于表现形式上。【例如，前端后端可以分工作业，效率高，方便多开发人员间的分工】</p>
+<p><strong>4、可维护性高</strong></p>
+<p>　　分离视图层和业务逻辑层也使得WEB应用更易于维护和修改。【例如：如果想改业务逻辑，只用改业务逻辑，如果想改视图，只用改视图，如果想增加功能，只需要增加即可，分层最大的好处就是容易后期维护降低维护成本，和增加新的功能，提高代码重用性，从而提高开发效率】</p>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p><strong>1、没有明确的定义</strong></p>
+<p>　　完全理解MVC并不是很容易。使用MVC需要精心的计划，由于它的内部原理比较复杂，所以需要花费一些时间去思考。同时由于模型和视图要严格的分离，这样也给调试应用程序带来了一定的困难。每个构件在使用之前都需要经过彻底的测试。</p>
+<p><strong>2、不适合小型，中等规模的应用程序</strong></p>
+<p>　　花费大量时间将MVC应用到规模并不是很大的应用程序通常会得不偿失。【这个是最明显的缺点，例如我们仅仅需要到数据库查信息，如果不分层设计我们可以直接从视图型层到模型去访问，效率上会有所提高，如果以代码的复杂性为代价，多了一层，代码量大大增加，在这个时候就降低了开发效率】</p>
+<p><strong>3、增加系统结构和实现的复杂性</strong></p>
+<p>　　对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。</p>
+<p><strong>4、视图与控制器间的过于紧密的连接</strong></p>
+<p>　　视图与控制器是相互分离，但却是联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用。【例如，不可能总是在jsp页面中直接访问模型，一般放在逻辑控制层进行处理，servlet】</p>
+<p><strong>5、视图对模型数据的低效率访问</strong><br>　　依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。【例如，页面的有一部分数据我并没有更新，但是提交到模型层照样会去获得返回显示 】</p>
 
             </div>
             <hr>
@@ -262,7 +263,7 @@
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                      <a class="hover-with-bg" href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%A2%E6%88%B7%E7%AB%AF/">移动客户端</a>
                     
                   </div>
                 
@@ -275,18 +276,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/10/%E7%A7%BB%E5%8A%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%80%BB%E7%BB%93/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">移动客户端总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/06/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/">
-                        <span class="hidden-mobile">数据库知识点</span>
+                      <a href="/2021/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/">
+                        <span class="hidden-mobile">计算机网络总结</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
