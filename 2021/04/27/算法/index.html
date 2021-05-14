@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      2.2k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      33
        分钟
     </span>
   
@@ -240,6 +240,38 @@
 
 <h1 id="二叉树后序遍历"><a href="#二叉树后序遍历" class="headerlink" title="二叉树后序遍历"></a>二叉树后序遍历</h1><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;<br>        <span class="hljs-built_in">stack</span>&lt;TreeNode*&gt; stk;<br>        <span class="hljs-keyword">if</span>(root != <span class="hljs-literal">NULL</span>)<br>            stk.push(root);<br>        <span class="hljs-comment">// curr存储当前退出栈的结点</span><br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span>(!stk.empty())<br>        &#123;<br>            TreeNode* top = stk.top();<br>            <span class="hljs-keyword">if</span>(top-&gt;left != <span class="hljs-literal">NULL</span> &amp;&amp; top-&gt;left != curr &amp;&amp; top-&gt;right != curr)<br>                stk.push(top-&gt;left);<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(top-&gt;right != <span class="hljs-literal">NULL</span> &amp;&amp; top-&gt;right != curr)<br>                stk.push(top-&gt;right);<br>            <span class="hljs-comment">// 当左右子树都处理过或者不存在情况下，说明此结点可以弹栈</span><br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                ans.push_back(top-&gt;val);<br>                stk.pop();<br>                curr = top;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br><br></code></pre></div></td></tr></table></figure>
 <h1 id="二叉树中序遍历"><a href="#二叉树中序遍历" class="headerlink" title="二叉树中序遍历"></a>二叉树中序遍历</h1><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;<br>        <span class="hljs-built_in">stack</span>&lt;TreeNode*&gt; stk;<br>        TreeNode* curr = root;<br>        <span class="hljs-keyword">while</span>(!stk.empty() || curr != <span class="hljs-literal">NULL</span>)<br>        &#123;<br>            <span class="hljs-comment">// 找到节点的最左侧节点，同时记录路径入栈</span><br>            <span class="hljs-keyword">while</span>(curr != <span class="hljs-literal">NULL</span>)<br>            &#123;<br>                stk.push(curr);<br>                curr = curr-&gt;left;<br>            &#125;<br>            <span class="hljs-comment">// top定义是此刻的弹栈元素</span><br>            TreeNode* top = stk.top();<br>            ans.push_back(top-&gt;val);<br>            stk.pop();<br>            <span class="hljs-comment">// 处理过最左侧结点后，判断其是否存在右子树</span><br>            <span class="hljs-keyword">if</span>(top-&gt;right != <span class="hljs-literal">NULL</span>)<br>                curr = top-&gt;right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br><br></code></pre></div></td></tr></table></figure>
+<h1 id="洗牌算法"><a href="#洗牌算法" class="headerlink" title="洗牌算法"></a>洗牌算法</h1><p>洗牌算法，顾名思义，就是只利用一次循环等概率的取到不同的元素(牌)。</p>
+<p>如果元素存在于数组中，即可将每次 random 到的元素 与 最后一个元素进行交换，然后 count–，即可。</p>
+<p>这相当于把这个元素删除，代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ctime&gt; </span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">10</span>;<br><br><span class="hljs-keyword">int</span> a[maxn];<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">randomInt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> rand()%a;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swapTwoElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>*x,<span class="hljs-keyword">int</span>*y)</span> </span>&#123;<br>     <span class="hljs-keyword">int</span> temp;<br>     temp=*x;<br>     *x=*y;<br>     *y=temp;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">int</span> count = <span class="hljs-keyword">sizeof</span>(a)/<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>);<br>    <span class="hljs-keyword">int</span> count_b = count;<br>    srand((<span class="hljs-keyword">unsigned</span>)time(<span class="hljs-literal">NULL</span>));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count; ++i) &#123; a[i] = i; &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count_b; ++i) &#123;<br>        <span class="hljs-keyword">int</span> random = randomInt(count);<br>        <span class="hljs-built_in">cout</span>&lt;&lt;a[random]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        swapTwoElement(&amp;a[random],&amp;a[count<span class="hljs-number">-1</span>]);<br>        count--;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="哈弗曼树"><a href="#哈弗曼树" class="headerlink" title="哈弗曼树"></a>哈弗曼树</h1><ul>
+<li><p>定义：给定n个权值作为n的叶子结点，构造一棵二叉树，若带权路径长度达到最小，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman tree)。</p>
+</li>
+<li><p>构造：</p>
+<p>假设有n个权值，则构造出的哈夫曼树有n个叶子结点。 n个权值分别设为 w1、w2、…、wn，则哈夫曼树的构造规则为：</p>
+<ol>
+<li>将w1、w2、…，wn看成是有 n 棵树的森林(每棵树仅有一个结点)；</li>
+<li>在森林中选出两个根结点的权值最小的树合并，作为一棵新树的左、右子树，且新树的根结点权值为其左、右子树根结点权值之和；</li>
+<li>从森林中删除选取的两棵树，并将新树加入森林；</li>
+<li>重复(2)、(3)步，直到森林中只剩一棵树为止，该树即为所求得的哈夫曼树。</li>
+</ol>
+</li>
+</ul>
+<h1 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h1><p>  <strong>B-树</strong>：B-树是一种非二叉的查找树， 除了要满足查找树的特性，还要满足以下结构特性：</p>
+<p>  一棵 m 阶的B-树：</p>
+<ol>
+<li><p>树的根或者是一片叶子(一个节点的树),或者其儿子数在 2 和 m 之间。</p>
+</li>
+<li><p>除根外，所有的非叶子结点的孩子数在 m/2 和 m 之间。</p>
+</li>
+<li><p>所有的叶子结点都在相同的深度。</p>
+<p>B-树的平均深度为logm/2(N)。执行查找的平均时间为O(logm)；</p>
+</li>
+</ol>
+<h1 id="Trie-树"><a href="#Trie-树" class="headerlink" title="Trie 树"></a>Trie 树</h1><p>  Trie 树，又称前缀树，字典树， 是一种有序树，用于保存关联数组，其中的键通常是字符串。与二叉查找树不同，键不是直接保存在节点中，而是由节点在树中的位置决定。一个节点的所有子孙都有相同的前缀，也就是这个节点对应的字符串，而根节点对应空字符串。一般情况下，不是所有的节点都有对应的值，只有叶子节点和部分内部节点所对应的键才有相关的值。</p>
+<p>  Trie 树查询和插入时间复杂度都是 O(n)，是一种以空间换时间的方法。当节点树较多的时候，Trie 树占用的内存会很大。</p>
+<p>  Trie 树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。</p>
 
             </div>
             <hr>

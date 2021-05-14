@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -243,7 +243,10 @@
 <p>断开TCP连接，浏览器对页面进行渲染呈现给客户端。</p>
 <h1 id="Socket步骤"><a href="#Socket步骤" class="headerlink" title="Socket步骤"></a>Socket步骤</h1><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>(1) 创建ServerSocket对象，绑定监听端口；<br> (2) 通过accept()方法监听客户端请求；<br> (3) 连接建立后，通过输入流读取客户端发送的请求信息；<br> (4) 通过输出流向客户端发送相应信息；<br> (5) 关闭响应资源。</p>
 <h2 id="1-2-客户端"><a href="#1-2-客户端" class="headerlink" title="1.2 客户端"></a>1.2 客户端</h2><p>(1) 创建Socket对象，指明需要连接的服务器地址和端口；<br> (2) 连接建立后，通过输出流向服务器端发送请求信息；<br> (3) 通过输入流获取服务器端返回的响应信息；<br> (4) 关闭响应资源。</p>
-<h1 id="有了I-O复用，为什么还需要socket？socket-存在的意义是什么"><a href="#有了I-O复用，为什么还需要socket？socket-存在的意义是什么" class="headerlink" title="有了I/O复用，为什么还需要socket？socket 存在的意义是什么"></a>有了I/O复用，为什么还需要socket？socket 存在的意义是什么</h1>
+<h1 id="私有（保留）地址"><a href="#私有（保留）地址" class="headerlink" title="私有（保留）地址"></a>私有（保留）地址</h1><p>A类 10.0.0.0 – 10.255.255.255 </p>
+<p>B类 172.16.0.0 – 172.31.255.255</p>
+<p>C类 192.168.0.0 – 192.168.255.255</p>
+
             </div>
             <hr>
             <div>

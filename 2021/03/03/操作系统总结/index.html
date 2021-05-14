@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7k 字
+      7.2k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      71
+      74
        分钟
     </span>
   
@@ -371,7 +371,7 @@
 <p>Worker 线程池会分配独立线程完成真正的业务， 并将结果返回给 Handler</p>
 <p>Handler 收到响应后，通过 send 将结果返回给 Client</p>
 <h1 id="Proactor"><a href="#Proactor" class="headerlink" title="Proactor"></a>Proactor</h1><p>流程与Reactor模式类似，区别在于proactor在IO ready事件触发后，完成IO操作再通知应用回调（被动）</p>
-
+<h1 id="生产者消费者"><a href="#生产者消费者" class="headerlink" title="生产者消费者"></a>生产者消费者</h1><figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp">semaphore mutex=<span class="hljs-number">1</span>; <span class="hljs-comment">//临界区互斥信号量</span><br>semaphore empty=n;  <span class="hljs-comment">//空闲缓冲区</span><br>semaphore full=<span class="hljs-number">0</span>;  <span class="hljs-comment">//缓冲区初始化为空</span><br>producer ()<span class="hljs-comment">//生产者进程 </span><br>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        produce an item <span class="hljs-keyword">in</span> nextp;  <span class="hljs-comment">//生产数据</span><br>        P(empty);  <span class="hljs-comment">//获取空缓冲区单元</span><br>        P(mutex);  <span class="hljs-comment">//进入临界区.</span><br>        <span class="hljs-keyword">add</span> nextp to buffer;  <span class="hljs-comment">//将数据放入缓冲区</span><br>        V(mutex);  <span class="hljs-comment">//离开临界区,释放互斥信号量</span><br>        V(full);  <span class="hljs-comment">//满缓冲区数加1</span><br>    &#125;<br>&#125;<br><br>consumer ()<span class="hljs-comment">//消费者进程</span><br>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        P(full);  <span class="hljs-comment">//获取满缓冲区单元</span><br>        P(mutex);  <span class="hljs-comment">// 进入临界区</span><br>        <span class="hljs-keyword">remove</span> an item <span class="hljs-keyword">from</span> buffer;  <span class="hljs-comment">//从缓冲区中取出数据</span><br>        V (mutex);  <span class="hljs-comment">//离开临界区，释放互斥信号量</span><br>        V (empty) ;  <span class="hljs-comment">//空缓冲区数加1</span><br>        consume the item;  <span class="hljs-comment">//消费数据</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
             </div>
             <hr>
             <div>
